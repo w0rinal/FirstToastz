@@ -15,7 +15,6 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "w0rinalsMessage";
     private static final boolean DEBUG = false;
     private static Button daButton;
-    private String where;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
                 //Toast.makeText(getApplicationContext(), "by now this button doesn't do anything but show this toast", Toast.LENGTH_SHORT).show();
 
                 //taken from http://stackoverflow.com/questions/6014028/closing-application-with-exit-button
+//Todo: remove this empty line and indent the next line
+whereAmI("exitting");
                 finish();
                 System.exit(0);
 
