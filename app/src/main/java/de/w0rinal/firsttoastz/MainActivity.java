@@ -29,7 +29,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View arg0) {
 
-                Toast.makeText(getApplicationContext(), "by now this button doesn't do anything but show this toast", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "by now this button doesn't do anything but show this toast", Toast.LENGTH_SHORT).show();
+
+                //taken from http://stackoverflow.com/questions/6014028/closing-application-with-exit-button
+                finish();
+                System.exit(0);
+
+                /*
+                ToDo: check http://stackoverflow.com/questions/3226495/android-exit-application-code
+                ToDO: compare differences between {finish(); System.exit(int code);} and method mentioned in link above
+                */
 
             }
         });
