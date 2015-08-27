@@ -1,7 +1,7 @@
 package de.w0rinal.firsttoastz;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull; //ToDo: find out what this is 
+import android.support.annotation.NonNull; //find out what this means
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "w0rinalsMessage";
     private static final boolean DEBUG = false;
     private static Button daButton;
-private static String stageCounter = "";
+    private static String stageCounter = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +23,7 @@ private static String stageCounter = "";
         setContentView(R.layout.activity_main);
         if (DEBUG) Log.i(TAG, "onCreate");
         whereAmI("onCreate");
-countStages("a");
+        countStages("a");
 
         daButton = (Button) findViewById(R.id.exitButton);
         daButton.setOnClickListener(new View.OnClickListener() {
@@ -33,8 +33,7 @@ countStages("a");
                 //Toast.makeText(getApplicationContext(), "by now this button doesn't do anything but show this toast", Toast.LENGTH_SHORT).show();
 
                 //taken from http://stackoverflow.com/questions/6014028/closing-application-with-exit-button
-//Todo: remove this empty line and indent lines correctly
-whereAmI("exiting");
+                whereAmI("exiting");
                 finish();
                 System.exit(0);
 
@@ -53,7 +52,7 @@ whereAmI("exiting");
         super.onStart();
         if (DEBUG) Log.i(TAG, "onStart");
         whereAmI("onStart");
-countStages("b");
+        countStages("b");
     }
 
 
@@ -62,7 +61,7 @@ countStages("b");
         super.onResume();
         if (DEBUG) Log.i(TAG, "onResume");
         whereAmI("onResume");
-countStages("c");
+        countStages("c");
     }
 
 
@@ -71,7 +70,7 @@ countStages("c");
         super.onPause();
         if (DEBUG) Log.i(TAG, "onPause");
         whereAmI("onPause");
-countStages("d");
+        countStages("d");
     }
 
 
@@ -80,7 +79,7 @@ countStages("d");
         super.onStop();
         if (DEBUG) Log.i(TAG, "onStop");
         whereAmI("onStop");
-countStages("e");
+        countStages("e");
     }
 
 
@@ -89,7 +88,7 @@ countStages("e");
         super.onRestart();
         if (DEBUG) Log.i(TAG, "onRestart");
         whereAmI("onRestart");
-countStages("f");
+        countStages("f");
     }
 
 
@@ -98,8 +97,8 @@ countStages("f");
         super.onDestroy();
         if (DEBUG) Log.i(TAG, "onDestroy");
         whereAmI("onDestroy");
-countStages("g");
-//Toast.makeText(this, stageCounter, Toast.LENGTH_LONG).show();
+        countStages("g");
+        //Toast.makeText(this, stageCounter, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -107,7 +106,7 @@ countStages("g");
         super.onSaveInstanceState(outState);
         if (DEBUG) Log.i(TAG, "onSaveInstanceState");
         whereAmI("onSaveInstanceState");
-countStages("h");
+        countStages("h");
     }
 
 
@@ -116,7 +115,7 @@ countStages("h");
         super.onRestoreInstanceState(savedInstanceState);
         if (DEBUG) Log.i(TAG, "onRestoreInstanceState");
         whereAmI("onRestoreInstanceState");
-countStages("i");
+        countStages("i");
     }
 
 
@@ -124,8 +123,8 @@ countStages("i");
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        countStages("j");
         return true;
-countStages("j");
     }
 
 
@@ -135,6 +134,7 @@ countStages("j");
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        countStages("k");
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
@@ -142,7 +142,6 @@ countStages("j");
         }
 
         return super.onOptionsItemSelected(item);
-countStages("k");
     }
 
 
@@ -150,12 +149,12 @@ countStages("k");
         Toast.makeText(getApplicationContext(), where, Toast.LENGTH_SHORT).show();
     }
 
-protected void countStages(String stages) {
-stageCounter = stageCounter + " " + stages ;
-//ToDo: when using IDE check out whether this works
-} 
+    protected void countStages(String stages) {
+        stageCounter = stageCounter + " " + stages;
+        //ToDo: when using IDE check out whether this works
+    }
 
-//ToDo: ability to view stageCounter
+    //ToDo: ability to view stageCounter
 
 
 }
