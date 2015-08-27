@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "w0rinalsMessage";
     private static final boolean DEBUG = false;
     private static Button daButton;
+private static int stageCounter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //taken from http://stackoverflow.com/questions/6014028/closing-application-with-exit-button
 //Todo: remove this empty line and indent the next line
-whereAmI("exitting");
+whereAmI("exiting");
                 finish();
                 System.exit(0);
 
@@ -136,6 +137,12 @@ whereAmI("exitting");
     protected void whereAmI(String where) {
         Toast.makeText(getApplicationContext(), where, Toast.LENGTH_SHORT).show();
     }
+
+protected void countStages(int stages) {
+stageCounter = stageCounter + stages;
+} 
+
+//ToDo: ability to view stageCounter, increase stageCounter
 
 
 }
