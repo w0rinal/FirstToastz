@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="Sup?"
+        android:text="@string/textview_text"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#FFFFFF" />
 
@@ -26,6 +26,6 @@
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
         android:layout_margin="16dp"
-        android:text="Well..." />
+        android:text="@string/button_text" />
 
 </RelativeLayout>

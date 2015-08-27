@@ -1,7 +1,7 @@
 package de.w0rinal.firsttoastz;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull; //find out what this means
+import android.support.annotation.NonNull; //ToDo: find out what this does
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -14,7 +14,6 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "w0rinalsMessage";
     private static final boolean DEBUG = false;
-    private static Button daButton;
     private static String stageCounter = "";
 
     @Override
@@ -25,8 +24,8 @@ public class MainActivity extends AppCompatActivity {
         whereAmI("onCreate");
         countStages("a");
 
-        daButton = (Button) findViewById(R.id.exitButton);
-        daButton.setOnClickListener(new View.OnClickListener() {
+        Button exit = (Button) findViewById(R.id.exitButton);
+        exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
 
@@ -44,6 +43,15 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        exit.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                whereAmI("leaving");
+                //ToDo: fill
+                return false;
+            }
+        });
+
     }
 
 
@@ -98,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         if (DEBUG) Log.i(TAG, "onDestroy");
         whereAmI("onDestroy");
         countStages("g");
-        //Toast.makeText(this, stageCounter, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, stageCounter, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -151,7 +159,6 @@ public class MainActivity extends AppCompatActivity {
 
     protected void countStages(String stages) {
         stageCounter = stageCounter + " " + stages;
-        //ToDo: when using IDE check out whether this works
     }
 
     //ToDo: ability to view stageCounter
