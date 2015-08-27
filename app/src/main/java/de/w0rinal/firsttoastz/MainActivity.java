@@ -1,7 +1,7 @@
 package de.w0rinal.firsttoastz;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import android.support.annotation.NonNull; //ToDo: find out what this is 
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "w0rinalsMessage";
     private static final boolean DEBUG = false;
     private static Button daButton;
-private static int stageCounter = 0;
+private static String stageCounter = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +23,7 @@ private static int stageCounter = 0;
         setContentView(R.layout.activity_main);
         if (DEBUG) Log.i(TAG, "onCreate");
         whereAmI("onCreate");
+countStages("a");
 
         daButton = (Button) findViewById(R.id.exitButton);
         daButton.setOnClickListener(new View.OnClickListener() {
@@ -32,7 +33,7 @@ private static int stageCounter = 0;
                 //Toast.makeText(getApplicationContext(), "by now this button doesn't do anything but show this toast", Toast.LENGTH_SHORT).show();
 
                 //taken from http://stackoverflow.com/questions/6014028/closing-application-with-exit-button
-//Todo: remove this empty line and indent the next line
+//Todo: remove this empty line and indent lines correctly
 whereAmI("exiting");
                 finish();
                 System.exit(0);
@@ -52,6 +53,7 @@ whereAmI("exiting");
         super.onStart();
         if (DEBUG) Log.i(TAG, "onStart");
         whereAmI("onStart");
+countStages("b");
     }
 
 
@@ -60,6 +62,7 @@ whereAmI("exiting");
         super.onResume();
         if (DEBUG) Log.i(TAG, "onResume");
         whereAmI("onResume");
+countStages("c");
     }
 
 
@@ -68,6 +71,7 @@ whereAmI("exiting");
         super.onPause();
         if (DEBUG) Log.i(TAG, "onPause");
         whereAmI("onPause");
+countStages("d");
     }
 
 
@@ -76,6 +80,7 @@ whereAmI("exiting");
         super.onStop();
         if (DEBUG) Log.i(TAG, "onStop");
         whereAmI("onStop");
+countStages("e");
     }
 
 
@@ -84,6 +89,7 @@ whereAmI("exiting");
         super.onRestart();
         if (DEBUG) Log.i(TAG, "onRestart");
         whereAmI("onRestart");
+countStages("f");
     }
 
 
@@ -92,6 +98,8 @@ whereAmI("exiting");
         super.onDestroy();
         if (DEBUG) Log.i(TAG, "onDestroy");
         whereAmI("onDestroy");
+countStages("g");
+//Toast.makeText(this, stageCounter, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -99,6 +107,7 @@ whereAmI("exiting");
         super.onSaveInstanceState(outState);
         if (DEBUG) Log.i(TAG, "onSaveInstanceState");
         whereAmI("onSaveInstanceState");
+countStages("h");
     }
 
 
@@ -107,6 +116,7 @@ whereAmI("exiting");
         super.onRestoreInstanceState(savedInstanceState);
         if (DEBUG) Log.i(TAG, "onRestoreInstanceState");
         whereAmI("onRestoreInstanceState");
+countStages("i");
     }
 
 
@@ -115,6 +125,7 @@ whereAmI("exiting");
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+countStages("j");
     }
 
 
@@ -131,6 +142,7 @@ whereAmI("exiting");
         }
 
         return super.onOptionsItemSelected(item);
+countStages("k");
     }
 
 
@@ -138,11 +150,12 @@ whereAmI("exiting");
         Toast.makeText(getApplicationContext(), where, Toast.LENGTH_SHORT).show();
     }
 
-protected void countStages(int stages) {
-stageCounter = stageCounter + stages;
+protected void countStages(String stages) {
+stageCounter = stageCounter + " " + stages ;
+//ToDo: when using IDE check out whether this works
 } 
 
-//ToDo: ability to view stageCounter, increase stageCounter
+//ToDo: ability to view stageCounter
 
 
 }
