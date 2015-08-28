@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         if (DEBUG) Log.i(TAG, "onCreate");
         whereAmI("onCreate");
-        countStages("a");
+        countStages("1");
 
         Button exit = (Button) findViewById(R.id.exitButton);
         exit.setOnClickListener(new View.OnClickListener() {
@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
                 //Toast.makeText(getApplicationContext(), "by now this button doesn't do anything but show this toast", Toast.LENGTH_SHORT).show();
 
                 //taken from http://stackoverflow.com/questions/6014028/closing-application-with-exit-button
-                whereAmI("exiting");
                 finish();
                 System.exit(0);
 
@@ -60,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         if (DEBUG) Log.i(TAG, "onStart");
         whereAmI("onStart");
-        countStages("b");
+        countStages("2");
     }
 
 
@@ -69,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         if (DEBUG) Log.i(TAG, "onResume");
         whereAmI("onResume");
-        countStages("c");
+        countStages("3");
     }
 
 
@@ -78,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
         if (DEBUG) Log.i(TAG, "onPause");
         whereAmI("onPause");
-        countStages("d");
+        countStages("4");
     }
 
 
@@ -87,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStop();
         if (DEBUG) Log.i(TAG, "onStop");
         whereAmI("onStop");
-        countStages("e");
+        countStages("5");
     }
 
 
@@ -96,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         super.onRestart();
         if (DEBUG) Log.i(TAG, "onRestart");
         whereAmI("onRestart");
-        countStages("f");
+        countStages("6");
     }
 
 
@@ -105,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         if (DEBUG) Log.i(TAG, "onDestroy");
         whereAmI("onDestroy");
-        countStages("g");
+        countStages("7");
         Toast.makeText(this, stageCounter, Toast.LENGTH_LONG).show();
     }
 
@@ -114,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         if (DEBUG) Log.i(TAG, "onSaveInstanceState");
         whereAmI("onSaveInstanceState");
-        countStages("h");
+        countStages("8");
     }
 
 
@@ -123,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
         if (DEBUG) Log.i(TAG, "onRestoreInstanceState");
         whereAmI("onRestoreInstanceState");
-        countStages("i");
+        countStages("9");
     }
 
 
@@ -131,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        countStages("j");
+        countStages("10");
         return true;
     }
 
@@ -142,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        countStages("k");
+        countStages("11");
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
@@ -151,6 +150,22 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+@Override
+public void onBackPressed() {
+whereAmI("onBackPressed");
+countStages("12");
+super.onBackPressed();
+} 
+
+@Override
+public void finish() {
+whereAmI("finish");
+countStages("13");
+super.finish();
+} 
+
+//ToDo: check if number are accepted as strings, indent correctly
 
 
     protected void whereAmI(String where) {
