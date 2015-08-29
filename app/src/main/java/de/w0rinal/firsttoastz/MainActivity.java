@@ -1,53 +1,48 @@
 package de.w0rinal.firsttoastz;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull; //ToDo: find out what this does
+import android.support.annotation.NonNull; //ToDo: still find out what this is. why keeps android studio deleting this?
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "w0rinalsMessage";
-    private static final boolean DEBUG = false;
+    private static final String TAG = "FirstToastzMessage";
+    private static final boolean DEBUGLOG = false;
+    private static final boolean DEBUGTOAST = true;
+    private static final boolean COUNT = true;
     private static String stageCounter = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (DEBUG) Log.i(TAG, "onCreate");
-        whereAmI("onCreate");
-        countStages("1");
 
-        Button exit = (Button) findViewById(R.id.exitButton);
-        exit.setOnClickListener(new View.OnClickListener() {
+        doStuff("onCreate", "1");
+
+        Button exiter = (Button) findViewById(R.id.exitButton);
+        exiter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-
-                //Toast.makeText(getApplicationContext(), "by now this button doesn't do anything but show this toast", Toast.LENGTH_SHORT).show();
-
-                //taken from http://stackoverflow.com/questions/6014028/closing-application-with-exit-button
+                doStuff("onClick", "2");
                 finish();
                 System.exit(0);
-
-                /*
-                ToDo: check http://stackoverflow.com/questions/3226495/android-exit-application-code
-                ToDO: compare differences between {finish(); System.exit(int code);} and method mentioned in link above
-                */
-
             }
         });
-        exit.setOnLongClickListener(new View.OnLongClickListener() {
+        exiter.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public boolean onLongClick(View v) {
-                whereAmI("leaving");
-                //ToDo: fill
-                return false;
+            public boolean onLongClick(View arg0) {
+                doStuff("onLongClick", "3");
+                Intent returnHome = new Intent(Intent.ACTION_MAIN);
+                returnHome.addCategory(Intent.CATEGORY_HOME);
+                returnHome.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(returnHome);
+                return true;
             }
         });
 
@@ -57,126 +52,74 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if (DEBUG) Log.i(TAG, "onStart");
-        whereAmI("onStart");
-        countStages("2");
+        doStuff("onStart", "4");
     }
-
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (DEBUG) Log.i(TAG, "onResume");
-        whereAmI("onResume");
-        countStages("3");
+        doStuff("onResume", "5");
     }
-
 
     @Override
     protected void onPause() {
         super.onPause();
-        if (DEBUG) Log.i(TAG, "onPause");
-        whereAmI("onPause");
-        countStages("4");
+        doStuff("onPause", "6");
     }
-
 
     @Override
     protected void onStop() {
         super.onStop();
-        if (DEBUG) Log.i(TAG, "onStop");
-        whereAmI("onStop");
-        countStages("5");
+        doStuff("onStop", "7");
     }
-
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        if (DEBUG) Log.i(TAG, "onRestart");
-        whereAmI("onRestart");
-        countStages("6");
+        doStuff("onRestart", "8");
     }
-
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (DEBUG) Log.i(TAG, "onDestroy");
-        whereAmI("onDestroy");
-        countStages("7");
-        Toast.makeText(this, stageCounter, Toast.LENGTH_LONG).show();
+        doStuff("onDestroy", "9");
+        if (COUNT) Toast.makeText(this, stageCounter, Toast.LENGTH_LONG).show();
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        if (DEBUG) Log.i(TAG, "onSaveInstanceState");
-        whereAmI("onSaveInstanceState");
-        countStages("8");
+        doStuff("onSaveInstanceState", "10");
     }
-
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        if (DEBUG) Log.i(TAG, "onRestoreInstanceState");
-        whereAmI("onRestoreInstanceState");
-        countStages("9");
+        doStuff("onRestoreInstanceState", "11");
     }
 
-
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        countStages("10");
-        return true;
+    public void onBackPressed() {
+        doStuff("onBackPressed", "12");
+        super.onBackPressed();
     }
 
-
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        countStages("11");
+    public void finish() {
+        doStuff("finish", "13");
+        super.finish();
+    }
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    protected void doStuff(String where, String stages) {
+        if (DEBUGLOG) Log.i(TAG, where);
+        if (DEBUGTOAST) Toast.makeText(getApplicationContext(), where, Toast.LENGTH_SHORT).show();
+        if (COUNT) {
+            stageCounter = stageCounter + " " + stages;
+
+            //ToDo: ability to view stageCounter
+            TextView stageLister = (TextView) findViewById(R.id.passedStages);
+            stageLister.setText(stageCounter);
         }
-
-        return super.onOptionsItemSelected(item);
     }
-
-@Override
-public void onBackPressed() {
-whereAmI("onBackPressed");
-countStages("12");
-super.onBackPressed();
-} 
-
-@Override
-public void finish() {
-whereAmI("finish");
-countStages("13");
-super.finish();
-} 
-
-//ToDo: check if number are accepted as strings, indent correctly
-
-
-    protected void whereAmI(String where) {
-        Toast.makeText(getApplicationContext(), where, Toast.LENGTH_SHORT).show();
-    }
-
-    protected void countStages(String stages) {
-        stageCounter = stageCounter + " " + stages;
-    }
-
-    //ToDo: ability to view stageCounter
-
 
 }
