@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FirstToastz</string>
+    <string name="app_name">FirstToast</string>
     <string name="textview_text"> 1: onCreate\n 2: onClick\n 3: onLongClick\n 4: onStart\n 5: onResume\n 6: onPause\n 7: onStop\n 8: onRestart\n 9: onDestroy\n10: onSaveInstanceState\n11: onRestoreInstanceState\n12: onBackPressed\n13: finish</string>
     <string name="button_text">Exit</string>
     <string name="action_settings">Settings</string>
